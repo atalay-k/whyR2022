@@ -1,15 +1,409 @@
 ---
-title: "why R 2022"
+title: "`r emo::ji('teacher')`WHY R? 2022 TURKEY"
 subtitle: "R Eğitimi"
-output: 
-  html_document:
-    toc: true
-    toc_depth: 3
-    toc_float: 
-      collapsed: false
-      smooth_scroll: false
-    theme:  default
-    highlight: null
+author: "Dr. Kubra ATALAY KABASAKAL"
+date: "17 Nisan 2022"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["xaringan-themer.css", "slides-style.css"]
+    nature:
+      highlightStyle: solarized-light
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+---
+<br>
+<br>
+.center[
+
+##  `r fontawesome::fa(name = "handshake")`: Kübra Atalay Kabasakal
+<br>
+--
+<br>
+
+##  `r fontawesome::fa(name = "link")`: [Hacettepe Üniversitesi](https://avesis.hacettepe.edu.tr/katalay)
+<br>
+--
+<br>
+]
+---
+
+## Eğitim ve Deneyim
+
+.center[
+
+```{r echo = FALSE, out.width ="15%"}
+knitr::include_graphics("img/hacettepe.PNG")
+
+
+knitr::include_graphics("img/university-of-iowa.jpg")
+
+```
+]
+
+<br>
+--
+
+
+.three-column[
+```{r echo = FALSE, out.width ="65%"}
+knitr::include_graphics("img/Rkitap.PNG")
+
+```
+]
+
+.three-column[
+```{r echo = FALSE, out.width ="100%"}
+knitr::include_graphics("img/paket1.PNG")
+
+```
+]
+
+.three-column[
+```{r echo = FALSE, out.width ="100%"}
+knitr::include_graphics("img/paket2.PNG")
+
+```
+]
+
+---
+## Eğitim ve Deneyim
+
+```{r echo = FALSE, out.width ="50%"}
+knitr::include_graphics("img/img1.PNG")
+knitr::include_graphics("img/img2.PNG")
+
+```
+
+---
+## Eğitim ve Deneyim
+
+.center[
+```{r echo = FALSE, out.width ="50%"}
+knitr::include_graphics("img/Ders1.PNG")
+```
+]
+<br>
+<!-- - Ders toplamda 4 defa açıldı. İlk açılış yılı 2017-->
+
+--
+.pull-left[
+
+- İhtiyaçlar
+
+- Deneyimler
+]
+--
+.pull-right[
+
+```{r echo = FALSE, out.width ="35%",fig.align='right'}
+knitr::include_graphics("img/dreams.PNG")
+```
+]
+.center[
+```{r echo = FALSE, out.width ="50%"}
+knitr::include_graphics("img/Ders2.PNG")
+```
+]
+---
+## Ölçme ve Psikometri Nedir?
+
+.pull-left-wide[
+- Klasik Test Kuramı 
+
+  - $\sigma^2_X=\sigma^2_T+\sigma^2_E$
+
+- Madde Tepki Kuramı
+  
+  - $P_i(\theta) = c_i +\frac{1-c_i}{1+exp(-[a_i(\theta-b_i)])}$
+
+- Genellenebilirik Kuramı
+   
+  - $\sigma^2(X_{bmp})=\sigma^2_b+\sigma^2_m+ \sigma^2_p+\sigma^2_{bm}+ \sigma^2_{bp} + \sigma^2_{mp}+ \sigma^2_{bmp,e}$
+
+]
+.pull-right-narrow[
+```{r echo = FALSE, out.width ="50%"}
+knitr::include_graphics("img/psikometri_1.PNG")
+```
+]
+
+---
+## İçeriğin oluşturulması
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(emojifont)
+library(fontawesome)
+ load.fontawesome()
+ # fontawesome('fa-face-thinking')
+```
+
+.pull-left-wide[
+- `r fa("r-project", fill = "steelblue")` öğretmeye nereden başlamalıyım? 
+ 
+  - Kurulum
+  
+  - Paket yükleme
+  
+  - Nesne Türleri
+  
+  - Veri okuma-yazma 
+  
+  - Veri manipulasyonu
+  
+  - Fonksiyonlar ve Döngüler
+  
+  - **. . . **
+]
+
+--
+.pull-right-narrow[
+
+<br>
+<br>
+<br>
+
+## `r fa("question", fill = "steelblue")`
+
+## `r fa("question", fill = "steelblue")`
+
+]
+
+---
+## Psikometrik Analizlerde Kullanılan Programlar
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(wordcloud)
+programlar <- c("Iteman","Tap","LISREL","IRTPRO","HLM","BILOG-MG","ConQuest",
+                "Facets",
+                "IRTLRDIF","IRTEQ","Mplus","DIFAS","HLM","IRT-Lab",
+"IPLINK","IRTDIF","IRTGEN","LINKDIF","LOGIST","MOKSCAL",
+"MULTILOG","NOHARM","PARSCALE","PRASCH","RASCAL","RUMM2010","TestFact","TestGraf",
+"EduG","WinBugs","WinGen","WINSTEPS","XCALIBRE","EQUATE","GLLAMM",
+"POLYEQUATE","SPSS","STDIF","Jmetrik",
+"Amos", "TESTFACT","DIMTEST")
+
+f= c(sample(40:50,8),    sample(30:40,7),
+                                  sample(10:30,5),
+                                  sample(1:15,5),
+                                  sample(1:13,5),
+                                  sample(1:10,5),
+                                  sample(1:10,7))
+ornek <- data.frame(programlar,f)
+
+wordcloud(words = ornek$programlar, freq = ornek$f, min.freq = 1,           max.words=200, random.order=FALSE, rot.per=0.35,            colors=brewer.pal(8, "Dark2"))
+# library(wordcloud2)
+# wordcloud2(data=ornek, size = 0.7, shape = 'circle')
+
+
+```
+
+
+ 
+
+<!-- https://www.umass.edu/education/programs/research-educational-measurement-psychometrics/student-resources-remp -->
+
+---
+## Psikometrik Analizlerde Kullanılan Programlar
+
+.pull-left[
+```{r echo = FALSE}
+knitr::include_graphics("img/Ornek_veri.PNG")
+```
+]
+--
+.pull-right[
+```{r echo = FALSE, out.width ="120%"}
+knitr::include_graphics("img/Ornek_cikti.PNG")
+```
+]
+
+
+---
+## İçeriğin oluşturulması
+
+- Fonksiyon yazma ihtiyacı
+
+--
+
+  - Veri Düzenleme
+
+--
+
+  - Tekrarlı analizler 
+ 
+--
+
+  - Çoklu çıktı okuma
+ 
+--
+
+  - Hata hesaplanması
+  
+--
+
+- `r fa("r-project", fill = "steelblue")`'in diğer psikometri programları ile uyumlu sayesinde "toplu işlem dosyalarını" oluşturup çalıştırma
+
+--
+
+- Basıma hazır raporlar oluşturulması
+
+
+---
+## Rutin Konu Başlıkları
+
+.pull-left[
+<br>
+```{r eval=FALSE}
+for(i in 1:5){
+
+  print(i)
+
+  }
+```
+]
+
+--
+
+.pull-right[
+<br>
+```{r echo=FALSE}
+for(i in 1:5){
+print(i)
+}
+```
+]
+
+--
+
+.pull-left[
+<br>
+```{r eval=FALSE}
+for(i in 1:5){
+
+  cat(i," +  ", i ," = ", 2*i,  "\n")
+
+  }
+```
+]
+
+--
+
+.pull-right[
+<br>
+```{r echo=FALSE}
+for(i in 1:5){
+cat(i," +  ", i ," = ", 2*i,  "\n")
+}
+```
+
+]
+---
+## Aşina Olunan Konulara Entegre
+
+.pull-left-wide[
+```{r}
+n_k <- 10                 # Küçük örneklem
+n_b <- 50                 # Büyük örneklem
+
+tekrar <- 10000              # Tekrar sayısı
+kucuk_orn <- numeric(tekrar) # Küçük örneklem ort.
+buyuk_orn <- numeric(tekrar) # Büyük örneklem ort.
+
+orneklem.normal <- rnorm(n = 1000, mean = 35, sd = 15)#Sekil
+
+for (i in 1:tekrar) {
+  kucuk_orn[i] <- mean(rnorm(n = n_k,mean =  35, sd = 15)  ) 
+  buyuk_orn[i] <- mean(rnorm(n = n_b,mean =  35, sd = 15)  ) 
+
+} 
+```
+]
+.pull-right-narrow[
+```{r echo=FALSE}
+par(mfrow = c(3,1))
+hist(orneklem.normal, breaks = 50, main = "Dağılımı", xlab = "",col = "steelblue")
+hist(kucuk_orn, breaks = 50, main = "Küçük Örneklemlerin \n Ortalama Dağılımı", xlab = "Ortalama",col = "steelblue")
+hist(buyuk_orn, breaks = 50, main = "Büyük Örneklemlerin \n Ortalama Dağılımı", xlab = "Ortalama",col = "steelblue")
+```
+]
+
+---
+## Aşina Olunan Konulara Entegre
+
+
+.pull-left-wide[
+```{r}
+n_k <- 10                 # Küçük örneklem
+n_b <- 50                 # Büyük örneklem
+
+tekrar <- 10000              # Tekrar sayısı
+kucuk_orn <- numeric(tekrar) # Küçük örneklem ort.
+buyuk_orn <- numeric(tekrar) # Büyük örneklem ort.
+
+orneklem.carpik<- rexp(n = 10000, rate = 1.5)#Sekil
+
+for (i in 1:tekrar) {
+  kucuk_orn[i] <- mean(rexp(n = 10, rate = 1.5))
+  buyuk_orn[i] <- mean(rexp(n = 30, rate = 1.5))
+
+} 
+```
+]
+.pull-right-narrow[
+```{r echo=FALSE}
+par(mfrow = c(3,1))
+hist(orneklem.carpik, breaks = 50, main = "Dağılımı", xlab = "",col = "steelblue")
+hist(kucuk_orn, breaks = 50, main = "Küçük Örneklemlerin \n Ortalama Dağılımı", xlab = "Ortalama",col = "steelblue")
+hist(buyuk_orn, breaks = 50, main = "Büyük Örneklem \n Ortalama Dağılımı", xlab = "Ortalama",col = "steelblue")
+```
+]
+---
+## Fonksiyonlar & Argümanlar
+
+- Hazır fonksiyonların kullanımı açıklamak
+
+```{r eval=FALSE, include=TRUE}
+library(CTT)
+itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE, 
+             rBisML=FALSE, hardFlag, easyFlag, 
+             pBisFlag, bisFlag, flagStyle = c("X",""))
+```
+
+--
+
+- Menü ile çalışan programlardan menü kullanımı öğretmek
+
+```{r echo = FALSE,out.width="%30"}
+knitr::include_graphics("img/TAP.PNG")
+```
+
+
+---
+## Hedef: `r fa("r-project", fill = "steelblue")` Öğrenmeyi Öğretme
+
+```{r echo = FALSE,out.width="%30"}
+knitr::include_graphics("img/teachinglearning.PNG")
+```
+
+- **daha iyi nasıl öğretebiliriz?**   
+
+--
+- **öğrenme yollarını nasıl düzenleyebiliriz?**
 
 ---
 
+.center[
+<br>
+<br>
+<br>
+
+.hand[Teşekkürler]
+
+]
