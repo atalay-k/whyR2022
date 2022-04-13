@@ -1,0 +1,15 @@
+---
+title: "why R 2022"
+subtitle: "R Eğitimi"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: 
+      collapsed: false
+      smooth_scroll: false
+    theme:  default
+    highlight: null
+    css: styles.css
+---
+
