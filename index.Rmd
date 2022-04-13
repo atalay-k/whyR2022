@@ -10,6 +10,6 @@ output:
       smooth_scroll: false
     theme:  default
     highlight: null
-    css: styles.css
+
 ---
 
