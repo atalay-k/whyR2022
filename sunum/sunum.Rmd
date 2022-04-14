@@ -18,6 +18,9 @@ output:
           </div>
         </div>
 ---
+
+<div class="my-logo-right"></div>
+
 <br>
 <br>
 .center[
@@ -82,8 +85,54 @@ knitr::include_graphics("img/img2.PNG")
 ```
 
 ---
-## Eğitim ve Deneyim
+## Eğitim Bilimlerinde R Kullanımı
 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE ,fig.align='center',out.width="100%"}
+library(DiagrammeR)
+library(DiagrammeRsvg) 
+library(rsvg) 
+my_grap <- mermaid("
+        graph TB
+        A[2014 - ilk calismalar]
+        A-->B[2016 - cok sayida calismada gozlenme]
+        B-->C[2019 - siklikla gozlenme ve ticari programların yerini alma]
+       
+        
+           style A fill:#FFF, stroke:#333, stroke-width:5px   
+           style B fill:#FFF, stroke:#333, stroke-width:5px
+           style C fill:#FFF, stroke:#333, stroke-width:5px
+
+        ")
+my_grap
+```
+
+
+---
+## Ölçme ve Psikometri Nedir?
+
+.pull-left-wide[
+- Klasik Test Kuramı 
+
+  - $\sigma^2_X=\sigma^2_T+\sigma^2_E$
+
+- Madde Tepki Kuramı
+  
+  - $P_i(\theta) = c_i +\frac{1-c_i}{1+exp(-[a_i(\theta-b_i)])}$
+
+- Genellenebilirik Kuramı
+   
+  - $\sigma^2(X_{bmp})=\sigma^2_b+\sigma^2_m+ \sigma^2_p+\sigma^2_{bm}+ \sigma^2_{bp} + \sigma^2_{mp}+ \sigma^2_{bmp,e}$
+
+]
+.pull-right-narrow[
+```{r echo = FALSE, out.width ="50%"}
+knitr::include_graphics("img/psikometri_1.PNG")
+```
+]
+
+---
+## Dersin İçeriğini Oluşturma Süreci
 .center[
 ```{r echo = FALSE, out.width ="50%"}
 knitr::include_graphics("img/Ders1.PNG")
@@ -111,69 +160,7 @@ knitr::include_graphics("img/dreams.PNG")
 knitr::include_graphics("img/Ders2.PNG")
 ```
 ]
----
-## Ölçme ve Psikometri Nedir?
 
-.pull-left-wide[
-- Klasik Test Kuramı 
-
-  - $\sigma^2_X=\sigma^2_T+\sigma^2_E$
-
-- Madde Tepki Kuramı
-  
-  - $P_i(\theta) = c_i +\frac{1-c_i}{1+exp(-[a_i(\theta-b_i)])}$
-
-- Genellenebilirik Kuramı
-   
-  - $\sigma^2(X_{bmp})=\sigma^2_b+\sigma^2_m+ \sigma^2_p+\sigma^2_{bm}+ \sigma^2_{bp} + \sigma^2_{mp}+ \sigma^2_{bmp,e}$
-
-]
-.pull-right-narrow[
-```{r echo = FALSE, out.width ="50%"}
-knitr::include_graphics("img/psikometri_1.PNG")
-```
-]
-
----
-## İçeriğin oluşturulması
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-library(emojifont)
-library(fontawesome)
- load.fontawesome()
- # fontawesome('fa-face-thinking')
-```
-
-.pull-left-wide[
-- `r fa("r-project", fill = "steelblue")` öğretmeye nereden başlamalıyım? 
- 
-  - Kurulum
-  
-  - Paket yükleme
-  
-  - Nesne Türleri
-  
-  - Veri okuma-yazma 
-  
-  - Veri manipulasyonu
-  
-  - Fonksiyonlar ve Döngüler
-  
-  - **. . . **
-]
-
---
-.pull-right-narrow[
-
-<br>
-<br>
-<br>
-
-## `r fa("question", fill = "steelblue")`
-
-## `r fa("question", fill = "steelblue")`
-
-]
 
 ---
 ## Psikometrik Analizlerde Kullanılan Programlar
@@ -222,6 +209,47 @@ knitr::include_graphics("img/Ornek_veri.PNG")
 ```{r echo = FALSE, out.width ="120%"}
 knitr::include_graphics("img/Ornek_cikti.PNG")
 ```
+]
+
+---
+## İçeriğin oluşturulması
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(emojifont)
+library(fontawesome)
+ load.fontawesome()
+ # fontawesome('fa-face-thinking')
+```
+
+.pull-left-wide[
+- `r fa("r-project", fill = "steelblue")` öğretmeye nereden başlamalıyım? 
+ 
+  - Kurulum
+  
+  - Paket yükleme
+  
+  - Nesne Türleri
+  
+  - Veri okuma-yazma 
+  
+  - Veri manipulasyonu
+  
+  - Fonksiyonlar ve Döngüler
+  
+  - **. . . **
+]
+
+--
+.pull-right-narrow[
+
+<br>
+<br>
+<br>
+
+## `r fa("question", fill = "steelblue")`
+
+## `r fa("question", fill = "steelblue")`
+
 ]
 
 
@@ -388,7 +416,7 @@ knitr::include_graphics("img/TAP.PNG")
 ---
 ## Hedef: `r fa("r-project", fill = "steelblue")` Öğrenmeyi Öğretme
 
-```{r echo = FALSE,out.width="%30"}
+```{r echo = FALSE,out.width="%20"}
 knitr::include_graphics("img/teachinglearning.PNG")
 ```
 
@@ -407,3 +435,48 @@ knitr::include_graphics("img/teachinglearning.PNG")
 .hand[Teşekkürler]
 
 ]
+
+
+<!-- “mirt”(Chalmers,2012), -->
+
+<!-- “lavaan”(Rosseel,2012), -->
+
+<!-- “ltm”(Rizopoulos,2006), -->
+
+<!-- “psych”(Revelle,2020)ve -->
+
+<!-- “sirt”(Robitzsch,2020)olaraksıralanabilir. -->
+
+<!-- dinamikvesürekligelişenbiryapıyasahipolması, -->
+<!--  -->
+<!-- kullanılacakilgilifonksiyonunarkaplanındakiçalışmamantığınıngörülebiliyorveihtiyacayadaisteğegöredüzenlenebiliyorolması, -->
+<!--  -->
+<!-- görselleştirmekonusundadiğerprogramlaragörebirçokyenilikvealternatifsunmasınedeniyleRyazılımıeğitimalanındadasıkçakullanılmaktadır. -->
+
+
+<!-- ```{r echo=FALSE, message=FALSE, warning=FALSE,fig.align='center'} -->
+<!-- library(DiagrammeR) -->
+<!-- library(DiagrammeRsvg) ; library(rsvg)  -->
+<!-- my_grap <- grViz("digraph{ -->
+
+<!--                 graph [layout = dot, -->
+<!--                 rankdir = LR]                      -->
+
+<!--                   node [shape = circle, -->
+<!--                   style = filled, -->
+<!--                   color = steelblue, -->
+<!--                   label = ''] -->
+
+<!--                      A[label = '2014 - Eğitim Bilimlerinde R kulanan ilk çalışmalar ',fontsize=30] -->
+<!--                      B[label = '2016 - Çok sayıda çalışmada gözlenme  ',fontsize=45] -->
+<!--                      C[label = '2019 - sıklıkla gözlenme ve ticari programların yerini alma',fontsize=60] -->
+
+
+
+<!--                      edge[color = grey] -->
+<!--                      A -> B [color = black] -->
+<!--                      B -> C [color = black] -->
+
+
+
+<!--                      }") -->
