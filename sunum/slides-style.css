@@ -265,3 +265,31 @@ div.my-footer a {
   padding-right: 4em;
   font-size: 70%;
 }
+
+
+.my-logo-left {
+content: "";
+    position: absolute;
+    top: 15px;
+    left:   20px;
+    height: 40px;
+    width: 120px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(https://whyr.pl/2022/turkey/assets/images/logo200.png);
+}
+
+.my-logo-right {
+content: "";
+    position: absolute;
+    top: 15px;
+    right:   4px;
+    height: 40px;
+    width: 120px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(https://whyr.pl/2022/turkey/assets/images/logo200.png);
+}
+Share
+Edit
+Follow
