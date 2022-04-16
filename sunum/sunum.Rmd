@@ -276,7 +276,7 @@ library(fontawesome)
   
 --
 
-- `r fa("r-project", fill = "steelblue")`'in diğer psikometri programları ile uyumlu sayesinde "toplu işlem dosyalarını" oluşturup çalıştırma
+- `r fa("r-project", fill = "steelblue")`'in diğer psikometri programları ile uyumu sayesinde "toplu işlem dosyalarını" oluşturup çalıştırma
 
 --
 
@@ -406,12 +406,92 @@ itemAnalysis(items, itemReport=TRUE, NA.Delete=TRUE,
 
 --
 
-- Menü ile çalışan programlardan menü kullanımı öğretmek
+- Menü ile çalışan programlarda menü kullanımı öğretmek
 
 ```{r echo = FALSE,out.width="%30"}
 knitr::include_graphics("img/TAP.PNG")
 ```
 
+---
+## Fonksiyonlar & Argümanlar
+
+- R'da Uluslararası değerlendirme çalışmalarına yönelik geliştirilmiş paketler (EdSurvey, RALSA,instvy,vb.) mevcuttur.
+
+- Bu paketler aracılığıyla, verilerin veri tabanından indirilmesi,istenilen bölümün seçilmesi, düzenlenmesi ve analiz edilmesi mümkündür.
+
+```{r eval=FALSE, include=TRUE}
+pisa <- pisa.select.merge(folder = "C:/PISA/PISA_2012/Data",
+                          school.file="INT_SCQ12_DEC03.sav",
+                          student.file="INT_STU12_DEC03.sav",
+student= c("ST01Q01", "ST04Q01", "ESCS", "PARED"), 
+school = c("CLSIZE", "TCSHORT"),
+countries = c("TUR", "USA", "JPN"))
+```
+
+---
+## Fonksiyonlar & Argümanlar
+
+.pull-left[
+
+```{r message=FALSE, warning=FALSE}
+library(tuev)
+library(tidyverse)
+library(plotly)
+
+dat <- PISA_OGR_2018 %>%
+       select(Anne_Egitim, ODOKUMA1) %>% 
+       group_split(Anne_Egitim)
+```
+
+
+```{r include=FALSE}
+library(tuev)
+library(tidyverse)
+library(plotly)
+library(labelled)
+dat <- PISA_OGR_2018 %>%
+select(CINSIYET, SINIF,KITAPSAYISI, SES, Anne_Egitim, Baba_Egitim,Okuloncesi_yil,OKUL_TUR,OKUMA_ZEVK,
+       OK_YETERLIK,ODOKUMA1) 
+
+# kategorik degişkenlerin faktor olarak kaydı
+dat <- dat %>% mutate_if(is.labelled, sjlabelled::as_factor)
+# Faktor degiskenlere duzey atama amacıyla yazılan fonksiyon
+levelsnames <- function(x){
+  levels(x) <- names(attr(x,"labels"))
+  x
+}
+# # Yazılan fonkisyonun faktor degiskenlere uygulanması
+dat <-mutate_if(dat,is.factor, levelsnames)
+
+datt <- dat %>% group_split(Anne_Egitim)
+#datt[1][[1]]
+OD_1 <- density(datt[1][[1]]$ODOKUMA1, na.rm = TRUE)
+OD_2 <- density(datt[2][[1]]$ODOKUMA1, na.rm = TRUE)
+OD_3 <- density(datt[3][[1]]$ODOKUMA1, na.rm = TRUE)
+OD_4 <- density(datt[4][[1]]$ODOKUMA1, na.rm = TRUE)
+OD_5 <- density(datt[5][[1]]$ODOKUMA1, na.rm = TRUE)
+OD_6 <- density(datt[6][[1]]$ODOKUMA1, na.rm = TRUE)
+OD_7 <- density(datt[7][[1]]$ODOKUMA1, na.rm = TRUE)
+```
+
+]
+.pull-right[
+
+```{r echo=FALSE, include =TRUE, message=FALSE, warning=FALSE}
+
+plot_ly() %>%
+  add_lines(x = ~OD_1$x, y = ~OD_1$y, name = "Okul_oncesi", fill = 'tozeroy') %>%
+  add_lines(x = ~OD_2$x, y = ~OD_2$y, name = "Ilkokul", fill = 'tozeroy') %>%
+  add_lines(x = ~OD_3$x, y = ~OD_3$y, name = "Ortaokul", fill = 'tozeroy') %>%
+  add_lines(x = ~OD_4$x, y = ~OD_4$y, name = "Lise", fill = 'tozeroy') %>%
+  add_lines(x = ~OD_5$x, y = ~OD_5$y, name = "Önlisans", fill = 'tozeroy') %>%
+  add_lines(x = ~OD_6$x, y = ~OD_6$y, name = "Lisans", fill = 'tozeroy') %>%
+  add_lines(x = ~OD_7$x, y = ~OD_7$y, name = "Lisansustu", fill = 'tozeroy') %>%
+  layout(xaxis = list(title = 'Okuma Başarı Puanı (OD1)'),
+         yaxis = list(title = 'Yoğunluk'))
+
+```
+]
 
 ---
 ## Hedef: `r fa("r-project", fill = "steelblue")` Öğrenmeyi Öğretme
