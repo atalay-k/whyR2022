@@ -163,7 +163,7 @@ knitr::include_graphics("img/Ders2.PNG")
 
 
 ---
-## Psikometrik Analizlerde Kullanılan Programlar
+## Psikometrik Analizleri için Programlar
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(wordcloud)
@@ -197,7 +197,7 @@ wordcloud(words = ornek$programlar, freq = ornek$f, min.freq = 1,           max.
 <!-- https://www.umass.edu/education/programs/research-educational-measurement-psychometrics/student-resources-remp -->
 
 ---
-## Psikometrik Analizlerde Kullanılan Programlar
+## Psikometrik Analizleri için Programlar
 
 .pull-left[
 ```{r echo = FALSE}
